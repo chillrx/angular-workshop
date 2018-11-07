@@ -1,0 +1,55 @@
+input {
+    border-radius: 3px;
+    border-color: blue;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 300px;
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+#f-button {
+    margin:10px 0;
+}
+
+#general {
+    width: 100%;
+    height: 100%;
+}
+
+.align-center {
+    display: flex;
+    justify-content: center;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
