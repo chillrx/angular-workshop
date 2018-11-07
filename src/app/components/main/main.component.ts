@@ -34,6 +34,10 @@ export class MainComponent implements OnInit {
     this.showForm();
   }
 
+  deleteUser(i) {
+    this.users.splice(i, 1);
+  }
+
   submitForm = () => {
     if (!this.userForm.value.editId) {
       this.users.push({

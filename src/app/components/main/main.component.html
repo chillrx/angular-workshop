@@ -23,12 +23,15 @@
             <th>Idade</th>
             <th></th>
         </tr>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users; let i = index">
             <td>{{ user.id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.age }}</td>
-            <td><i class="material-icons pointer" (click)="editForm(user)">edit</i></td>
+            <td>
+                <i class="material-icons pointer" (click)="editForm(user)">edit</i>
+                <i class="material-icons pointer" (click)="deleteUser(i)">delete</i>
+            </td>
         </tr>
     </table>
 </div>
