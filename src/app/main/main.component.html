@@ -1,0 +1,52 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="#">Início</a>
+</div>
+
+<div id="main">
+    <div id="toolbar">
+        <span (click)="openNav()" class="pointer mg10" *ngIf="!toggleStatus">&#9776;</span>
+        <ul>
+            <li><a class="active" [routerLink]="['/main']">Início</a></li>
+        </ul>
+    </div>
+
+    <h2 style="text-align: center">Formulário de usuários</h2>
+    <div *ngIf="!userForm.value.showForm" class="align-center mb10">
+        <button (click)="showForm()">Novo usuário</button>
+    </div>
+
+    <form class="centered-content" *ngIf="userForm.value.showForm" [formGroup]="userForm">
+        <input type="text" placeholder="Nome" formControlName="name">
+        <input type="email" placeholder="E-mail" formControlName="email">
+        <input type="number" placeholder="Idade" formControlName="age">
+
+        <div id="f-button">
+            <button class="mr10" type="submit" (click)="submitForm()" [disabled]="userForm.invalid">
+                {{ userForm.value.editId ? 'Editar' : 'Criar' }}</button>
+            <button (click)="userForm.reset()">Cancelar</button>
+        </div>
+    </form>
+
+    <div class="align-center mb10">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Idade</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let user of users; let i = index">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.age }}</td>
+                <td class="flex">
+                    <i class="material-icons pointer" (click)="editForm(user)">edit</i>
+                    <i class="material-icons pointer" (click)="deleteUser(i)">delete</i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
