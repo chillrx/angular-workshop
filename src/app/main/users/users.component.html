@@ -1,0 +1,37 @@
+<div class="align-center mb10">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Idade</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.age }}</td>
+      <td class="flex align-center">
+        <i class="material-icons pointer btn-edit" (click)="editForm(user)">edit</i>
+        <i class="material-icons pointer btn-delete" (click)="deleteUser(i)">delete</i>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="!userForm.value.showForm" class="align-center mb10 form">
+  <button (click)="showForm()" class="btn btn-cria">Novo Usuário</button>
+</div>
+
+<form class="centered-content" *ngIf="userForm.value.showForm" [formGroup]="userForm">
+  <input type="text" placeholder="Nome" formControlName="name">
+  <input type="email" placeholder="E-mail" formControlName="email">
+  <input type="number" placeholder="Idade" formControlName="age">
+
+  <div id="f-button">
+    <button class="mr10 btn btn-option" type="submit" (click)="submitForm()" [disabled]="userForm.invalid">{{
+      userForm.value.editId ? 'Editar' : 'Criar' }}</button>
+    <button (click)="userForm.reset()" class="btn btn-cancela">Cancelar</button>
+  </div>
+</form>
