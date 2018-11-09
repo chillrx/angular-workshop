@@ -1,11 +1,12 @@
-<div class="align-center mb10">
+<!-- WRAP DA TABELA -->
+<div class="wrap-tabela">
   <table>
     <tr>
-      <th>ID</th>
+      <th class="rounded-left">ID</th>
       <th>Nome</th>
       <th>E-mail</th>
       <th>Idade</th>
-      <th></th>
+      <th class="rounded-right"></th>
     </tr>
     <tr *ngFor="let user of users; let i = index">
       <td>{{ user.id }}</td>
@@ -20,10 +21,12 @@
   </table>
 </div>
 
+<!-- BOTAO NOVO USUARIO -->
 <div *ngIf="!userForm.value.showForm" class="align-center mb10 form">
   <button (click)="showForm()" class="btn btn-cria">Novo Usuário</button>
 </div>
 
+<!-- FORMULARIO DE CADASTRO -->
 <form class="centered-content" *ngIf="userForm.value.showForm" [formGroup]="userForm">
   <input type="text" placeholder="Nome" formControlName="name">
   <input type="email" placeholder="E-mail" formControlName="email">

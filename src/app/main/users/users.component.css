@@ -19,7 +19,8 @@ table {
 }
 
 tr:nth-child(1) {
-    background-color: #00bfa5;
+    background-color: #1abc9c;
+    /* background-image: linear-gradient(to top, #ff758c, #ff7eb3); */
     color: #fff;
 }
 
@@ -64,10 +65,6 @@ td, th {
     justify-content: center;
 }
 
-.mb10 {
-    margin-bottom: 10px;
-}
-
 .btn {
     border-radius: 5px;
     color: #fff;
@@ -106,4 +103,20 @@ td, th {
 
 .btn-delete {
     color: #ef5350;
+}
+
+.wrap-tabela {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.rounded-left {
+    border-top-left-radius: 10px;
+}
+
+.rounded-right {
+    border-top-right-radius: 10px;
 }
