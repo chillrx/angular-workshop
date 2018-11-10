@@ -2,19 +2,17 @@
 <div class="wrap-tabela">
   <table>
     <tr>
-      <th class="rounded-left">ID</th>
-      <th>Nome</th>
+      <th class="rounded-left">Nome</th>
       <th>E-mail</th>
       <th>Idade</th>
       <th class="rounded-right"></th>
     </tr>
-    <tr *ngFor="let user of users; let i = index">
-      <td>{{ user.id }}</td>
+    <tr *ngFor="let user of users | async; let i = index">
       <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.age }}</td>
       <td class="flex align-center">
-        <i class="material-icons pointer btn-edit" (click)="editForm(user)">edit</i>
+        <i class="material-icons pointer btn-edit" (click)="editForm(user, i)">edit</i>
         <i class="material-icons pointer btn-delete" (click)="deleteUser(i)">delete</i>
       </td>
     </tr>
@@ -33,7 +31,7 @@
   <input type="number" placeholder="Idade" formControlName="age">
 
   <div id="f-button">
-    <button class="mr10 btn btn-option" type="submit" (click)="submitForm()" [disabled]="userForm.invalid">{{
+    <button class="mr10 btn btn-option" type="submit" (click)="!userForm.value.editId ? addUser() : updateUser()" [disabled]="userForm.invalid">{{
       userForm.value.editId ? 'Editar' : 'Criar' }}</button>
     <button (click)="userForm.reset()" class="btn btn-cancela">Cancelar</button>
   </div>
