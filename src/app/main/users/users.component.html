@@ -1,38 +1,42 @@
-<!-- WRAP DA TABELA -->
-<div class="wrap-tabela">
-  <table>
-    <tr>
-      <th class="rounded-left">Nome</th>
-      <th>E-mail</th>
-      <th>Idade</th>
-      <th class="rounded-right"></th>
-    </tr>
-    <tr *ngFor="let user of users | async; let i = index">
-      <td>{{ user.name }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.age }}</td>
-      <td class="flex align-center">
-        <i class="material-icons pointer btn-edit" (click)="editForm(user, i)">edit</i>
-        <i class="material-icons pointer btn-delete" (click)="deleteUser(i)">delete</i>
-      </td>
-    </tr>
-  </table>
-</div>
-
-<!-- BOTAO NOVO USUARIO -->
-<div *ngIf="!userForm.value.showForm" class="align-center mb10 form">
-  <button (click)="showForm()" class="btn btn-cria">Novo Usuário</button>
-</div>
-
-<!-- FORMULARIO DE CADASTRO -->
-<form class="centered-content" *ngIf="userForm.value.showForm" [formGroup]="userForm">
-  <input type="text" placeholder="Nome" formControlName="name">
-  <input type="email" placeholder="E-mail" formControlName="email">
-  <input type="number" placeholder="Idade" formControlName="age">
-
-  <div id="f-button">
-    <button class="mr10 btn btn-option" type="submit" (click)="!userForm.value.editId ? addUser() : updateUser()" [disabled]="userForm.invalid">{{
-      userForm.value.editId ? 'Editar' : 'Criar' }}</button>
-    <button (click)="userForm.reset()" class="btn btn-cancela">Cancelar</button>
+<!--TABELA -->
+<div class="content-area">
+  <div class="table-r mt10">
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Idade</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let user of users | async; let i = index">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.age }}</td>
+        <td class="flex align-center">
+          <i class="material-icons pointer btn-edit" (click)="editForm(user, i)">edit</i>
+          <i class="material-icons pointer btn-delete" (click)="deleteUser(i)">delete</i>
+        </td>
+      </tr>
+    </table>
   </div>
-</form>
+
+  <!-- BOTAO NOVO USUARIO -->
+  <div *ngIf="!userForm.value.showForm" class="align-center mt10 mb3r">
+    <button (click)="showForm()" class="btn btn-cria">Novo Usuário</button>
+  </div>
+
+  <!-- FORMULARIO DE CADASTRO -->
+  <form class="centered-content mb3r" *ngIf="userForm.value.showForm" [formGroup]="userForm">
+    <input type="text" placeholder="Nome" formControlName="name">
+    <input type="email" placeholder="E-mail" formControlName="email">
+    <input type="number" placeholder="Idade" formControlName="age">
+
+    <div class="flex mt10 mb10">
+      <button class="mr10 btn btn-option" type="submit" (click)="!userForm.value.editId ? addUser() : updateUser()"
+        [disabled]="userForm.invalid">{{
+        userForm.value.editId ? 'Editar' : 'Criar' }}</button>
+      <button (click)="userForm.reset()" class="btn btn-cancela">Cancelar</button>
+    </div>
+
+  </form>
+</div>

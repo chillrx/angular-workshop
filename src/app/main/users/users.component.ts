@@ -37,12 +37,6 @@ export class UsersComponent implements OnInit {
     this.userForm.controls.showForm.setValue(true);
   }
 
-  editForm = (item, index) => {
-    this.userForm.patchValue(item);
-    this.userForm.controls.editId.setValue(index);
-    this.showForm();
-  }
-
   deleteUser = (index) => {
     this.usersRef.remove(this.usersKeys[index]);
     this.userForm.reset();
@@ -55,6 +49,12 @@ export class UsersComponent implements OnInit {
       age: this.userForm.value.age
     });
     this.userForm.reset();
+  }
+
+  editForm = (item, index) => {
+    this.userForm.patchValue(item);
+    this.userForm.controls.editId.setValue(index);
+    this.showForm();
   }
 
   updateUser = () => {
